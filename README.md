@@ -22,7 +22,8 @@
   - ``` Configure default build task -> other```
   - ``` copy the given file into your task.json ``` [json file](cp-setup/tasks.json)
 
-- Create a input.txt for your inputs and output.txt for your output.
+- Create file with .cpp extension, input.txt for your inputs and output.txt for your output.
+- Cmd+Shift+B to run your code.
 - For setting up c++ snippets, refer [snippets.json](cp-setup/snippet.json)
 
 <html lang="en">
