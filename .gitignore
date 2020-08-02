@@ -1,3 +1,6 @@
 # Gitignore file
 
 .vscode/
+code.cpp
+input.txt
+output.txt
