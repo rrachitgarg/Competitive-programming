@@ -1,0 +1,38 @@
+{
+  "Default cpp format": {
+    "prefix": ["include", "default"],
+    "body": [
+      "/*\nAuthor : RachitG",
+      "Question: ",
+      "Question link: ",
+      "*/\n",
+      "#include <bits/stdc++.h>",
+      "using namespace std;",
+      "\n",
+      "#define ll long long",
+      "#define ull unsigned long long",
+      "#define vl vector<ll>",
+      "#define vi vector<int>",
+      "#define fo(x,n) for(int i=x;i<n;i++)",
+      "#define pb push_back",
+      "#define debug(n)   cout<<n<<endl;",
+      "#define debug_arr(arr) for(int i=0;arr.size();i++) cout<<arr[i]<<\" \";  ",
+      "#define debug_2darr(arr) for(int i=0;arr.size();i++) { for(int j=0;j<arr[i].size();j++) cout<<arr[i][j]<<\" \";   cout<<endl;  }",
+      "#define newline cout<<endl;",
+      "\n",
+      "int main(){\n",
+      "	ios_base::sync_with_stdio(false);",
+      "	cin.tie(NULL);",
+      "\n    $1",
+      "\n\n",
+      "	return 0;",
+      "}\n",
+      ""
+    ],
+    "description": "This is a c++ snippet"
+  },
+  "Multi-testcase": {
+    "prefix": "testcase",
+    "body": ["int t;", "cin>>t;", "while(t--){", "\n", "}"]
+  }
+}
