@@ -1,7 +1,7 @@
 /*
 Author : RachitG
-Question: House robber
-Question link: https://leetcode.com/problems/house-robber/
+Question: House robber II
+Question link: https://leetcode.com/problems/house-robber-ii/
 */
 
 #include <bits/stdc++.h>
@@ -26,21 +26,33 @@ using namespace std;
     }
 #define newline cout << endl;
 
-// For this problem, we use the concept of prev & curr. It will ensure we are
-// not including the previous houses.
+// This is a variant of house robber I.
+// Here instead of a linear array, we have a circular array.
+// So the point to notice here is if we include 1st house, we can't loot last house & vice-versa.
 
 int rob(vector<int> &nums)
 {
     int n = nums.size();
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return nums[0];
     int prev = 0, curr = 0;
-    fo(i, 0, n)
+    fo(i, 0, n - 1)
     {
         int temp = max(prev + nums[i], curr);
         prev = curr;
         curr = temp;
     }
-
-    return curr;
+    int temp_ans = curr;
+    prev = curr = 0;
+    fo(i, 1, n)
+    {
+        int temp = max(prev + nums[i], curr);
+        prev = curr;
+        curr = temp;
+    }
+    return max(temp_ans, curr);
 }
 
 int main()
@@ -48,6 +60,7 @@ int main()
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
     int n;
     cin >> n;
     vi input_arr(n);
@@ -56,5 +69,6 @@ int main()
         cin >> input_arr[i];
     }
     debug(rob(input_arr));
+
     return 0;
 }
