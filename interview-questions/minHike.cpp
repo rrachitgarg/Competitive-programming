@@ -51,7 +51,7 @@ vi minHike(vi arr)
         if (arr[i] > arr[i - 1] && arr[i] < arr[i + 1])
             ans[i] = ans[i - 1] + 1;
     }
-    fo(i, 1, n + 1)
+    for (int i = n; i > 0; i--)
     {
         if (arr[i] < arr[i - 1] && arr[i] > arr[i + 1])
             ans[i] = ans[i + 1] + 1;

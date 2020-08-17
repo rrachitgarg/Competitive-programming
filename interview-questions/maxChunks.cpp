@@ -26,9 +26,25 @@ using namespace std;
     }
 #define newline cout << endl;
 
+// When the element is from 1-n
+
+int maxChunksToSortedI(vector<int> arr)
+{
+    int n = arr.size();
+    int mx = -1, cnt = 0;
+    for (int i = 0; i < n; i++)
+    {
+        mx = max(mx, arr[i]);
+
+        if (mx == i + 1)
+            cnt++;
+    }
+    return cnt;
+}
+
 // This solution also handles the case if duplicate exists.
 
-int maxChunksToSorted(vector<int> &arr)
+int maxChunksToSortedII(vector<int> &arr)
 {
 
     int n = arr.size();
@@ -68,6 +84,6 @@ int main()
     {
         cin >> input_arr[i];
     }
-    debug(maxChunksToSorted(input_arr));
+    debug(maxChunksToSortedII(input_arr));
     return 0;
 }
