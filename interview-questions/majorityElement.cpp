@@ -1,7 +1,7 @@
 /*
 Author : RachitG
-Question: Max Product Subarray
-Question link: https://www.geeksforgeeks.org/maximum-product-subarray/
+Question: Majority Element
+Question link: https://leetcode.com/problems/majority-element/
 */
 
 #include <bits/stdc++.h>
@@ -27,36 +27,28 @@ using namespace std;
 #define newline cout << endl;
 #define mod 1e9 + 7
 
-int maxProduct(vi arr)
+int majorityElement(vector<int> &nums)
 {
-    int n = arr.size();
-    int mx_product = INT_MIN;
-    int mx_pos = 1, mx_neg = 1;
+    int n = nums.size();
+    int element = nums[0], cnt = 1;
 
-    fo(i, 0, n)
+    fo(i, 1, n)
     {
-        if (arr[i] > 0)
+        if (nums[i] == element)
         {
-            mx_pos *= arr[i];
-            mx_neg = min(1, mx_neg * arr[i]);
-        }
-        else if (arr[i] == 0)
-        {
-            mx_pos = 0;
-            mx_neg = 1;
+            cnt++;
         }
         else
         {
-            int temp = mx_pos;
-            mx_pos = mx_neg * arr[i];
-            mx_neg = temp * arr[i];
+            cnt--;
         }
-
-        mx_product = max(mx_product, mx_pos);
-        if (mx_pos <= 0)
-            mx_pos = 1;
+        if (cnt == 0)
+        {
+            cnt = 1;
+            element = nums[i];
+        }
     }
-    return mx_product;
+    return element;
 }
 
 int main()
@@ -72,6 +64,6 @@ int main()
     {
         cin >> input[i];
     }
-    debug(maxProduct(input));
+    debug(majorityElement(input));
     return 0;
 }

@@ -1,7 +1,7 @@
 /*
 Author : RachitG
-Question: Max Product Subarray
-Question link: https://www.geeksforgeeks.org/maximum-product-subarray/
+Question: Majority Element 2
+Question link: https://leetcode.com/problems/majority-element-ii/
 */
 
 #include <bits/stdc++.h>
@@ -27,36 +27,53 @@ using namespace std;
 #define newline cout << endl;
 #define mod 1e9 + 7
 
-int maxProduct(vi arr)
+vi majorityElement(vi arr)
 {
     int n = arr.size();
-    int mx_product = INT_MIN;
-    int mx_pos = 1, mx_neg = 1;
+    int lim = n / 3;
+    int f, s, cntf = 0, cnts = 0;
 
-    fo(i, 0, n)
+    for (auto i : arr)
     {
-        if (arr[i] > 0)
+        if (cntf == 0)
         {
-            mx_pos *= arr[i];
-            mx_neg = min(1, mx_neg * arr[i]);
+            cntf++;
+            f = i;
         }
-        else if (arr[i] == 0)
+        else if (cnts == 0)
         {
-            mx_pos = 0;
-            mx_neg = 1;
+            cnts++;
+            s = i;
         }
         else
         {
-            int temp = mx_pos;
-            mx_pos = mx_neg * arr[i];
-            mx_neg = temp * arr[i];
+            cntf--;
+            cnts--;
         }
-
-        mx_product = max(mx_product, mx_pos);
-        if (mx_pos <= 0)
-            mx_pos = 1;
     }
-    return mx_product;
+    cntf = 0;
+    cnts = 0;
+    for (auto i : arr)
+    {
+        if (i == f)
+        {
+            cntf++;
+        }
+        else
+        {
+            cnts++;
+        }
+    }
+    vi ans;
+    if (cntf > lim)
+    {
+        ans.pb(f);
+    }
+    if (cnts > lim)
+    {
+        ans.pb(s);
+    }
+    return ans;
 }
 
 int main()
@@ -72,6 +89,7 @@ int main()
     {
         cin >> input[i];
     }
-    debug(maxProduct(input));
+    vi ans = majorityElement(input);
+    debug_arr(ans);
     return 0;
 }
