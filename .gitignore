@@ -2,5 +2,6 @@
 
 .vscode/
 code.cpp
+generateTestCases.cpp
 input.txt
 output.txt
